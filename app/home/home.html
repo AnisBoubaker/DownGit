@@ -8,12 +8,14 @@
 
 
     <div class="vertical-space"></div>
-    <div class="col-md-6 center-row">
-        <input name="url" type="url" placeholder="GitHub File or Directory Link" class="form-control" ng-model="url" ng-keypress="catchEnter($event)"></input>
-    </div>
-    <div class="btn-group center-row">
-        <button type="button" class="btn btn-default" ng-click="createDownLink()">Create Download Link</button>
-        <button type="button" class="btn btn-default" ng-click="download()">Download</button>
+    <div id='editLink'>
+        <div class="col-md-6 center-row">
+            <input name="url" type="url" placeholder="GitHub File or Directory Link" class="form-control" ng-model="url" ng-keypress="catchEnter($event)"></input>
+        </div>
+        <div class="btn-group center-row">
+            <button type="button" class="btn btn-default" ng-click="createDownLink()">Create Download Link</button>
+            <button type="button" class="btn btn-default" ng-click="download()">Download</button>
+        </div>
     </div>
 
 
@@ -38,3 +40,9 @@
 
 </div>
 </div>
+<script>
+    const searchParams = new URLSearchParams(window.location.hash);
+    if(! searchParams.has('noedit') ){
+        document.querySelector('#editLink').style.display = 'none';
+    }
+</script>
